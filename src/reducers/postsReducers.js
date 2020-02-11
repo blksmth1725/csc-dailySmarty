@@ -11,6 +11,6 @@ export default function(state = INIT_STATE, action) {
       return [...state, recentPosts, action.payload];
 
     default:
-      state;
+      return state;
   }
 }
