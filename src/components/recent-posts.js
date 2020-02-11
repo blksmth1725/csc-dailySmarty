@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import SearchBar from "./search-bar";
 
 class RecentPosts extends Component {
   componentDidMount() {
@@ -26,4 +27,4 @@ class RecentPosts extends Component {
   }
 }
 
-export default connect(null, actions)(RecentPosts);
+export default connect(null, actions)(SearchBar);
