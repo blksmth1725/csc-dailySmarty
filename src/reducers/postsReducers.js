@@ -1,4 +1,4 @@
-import { SET_RECENT_POSTS } from "../actions/index";
+import { SET_RECENT_POSTS } from "../actions/types";
 
 const INIT_STATE = {
   posts: [],
