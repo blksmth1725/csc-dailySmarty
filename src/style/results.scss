@@ -36,5 +36,24 @@
     text-decoration: none;
   }
   .result-post-links {
+    // display: flex;
+  }
+}
+
+.post-link {
+  display: flex;
+
+  .post-link-box {
+    min-width: 70px;
+    background-color: $color-grey-three;
+    margin-right: 16px;
+    margin-bottom: 5px;
+  }
+
+  .post-link-link a {
+    color: $color-grey-one;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration: none;
   }
 }
