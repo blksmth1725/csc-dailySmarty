@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AnimateHeight from 'react-animate-height'
+import { Link } from 'react-router-dom'
 
 class Post extends Component {
   constructor(props) {
@@ -21,18 +22,50 @@ class Post extends Component {
     return topics
   }
 
+  getNameForPostLink(str) {
+    var n = str.lastIndexOf('/')
+    var link = str.substring(n + 1, str.length)
+    if (n + 1 == str.length) {
+      link = str.slice(0, n)
+      n = link.lastIndexOf('/')
+      link = str.substring(n + 1, str.length - 1)
+    }
+
+    if (link.includes('.html')) {
+      link = link.substring(0, link.length - 5)
+    }
+
+    if (link.includes('.htm')) {
+      link = link.substring(0, link.length - 4)
+    }
+
+    return link
+  }
+
   renderLinks() {
     let links = this.props.post_links.map((post_link, index) => {
-      return (
-        <div className="post-link" key={index}>
-          <div className="post-link-box"></div>
-          <AnimateHeight duration={500} height={this.state.height}>
-            <div className="post-link-link">
-              <a href={post_link.link_url}>Useful Link {index + 1}</a>
-            </div>
-          </AnimateHeight>
-        </div>
-      )
+      if (links == 0) {
+        return (
+          <div className="post-linkless">
+            <AnimateHeight duration={500} height {...state.height}>
+              <div>No Post Link</div>
+            </AnimateHeight>
+          </div>
+        )
+      } else {
+        return (
+          <div className="post-link" key={index}>
+            <div className="post-link-box"></div>
+            <AnimateHeight duration={500} height={this.state.height}>
+              <div className="post-link-link">
+                <a href={post_link.link_url}>
+                  {this.getNameForPostLink(post_link.link_url)}
+                </a>
+              </div>
+            </AnimateHeight>
+          </div>
+        )
+      }
     })
     return links
   }
